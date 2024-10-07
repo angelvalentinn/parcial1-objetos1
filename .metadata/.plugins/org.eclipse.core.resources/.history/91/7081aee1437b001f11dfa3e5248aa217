@@ -1,0 +1,115 @@
+package Modelo;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class AerolineasArgentinas {
+	
+	private List<Aeropuerto> lstAeropuerto;
+	private List<Pasajero> lstPasajeros;
+	private List<Vuelo> lstVuelos;
+	
+	public AerolineasArgentinas() {
+		super();
+		this.lstAeropuerto = new ArrayList<Aeropuerto>();
+		this.lstPasajeros = new ArrayList<Pasajero>();
+		this.lstVuelos = new ArrayList<Vuelo>();
+	}
+
+	public List<Aeropuerto> getLstAeropuerto() {
+		return lstAeropuerto;
+	}
+
+	public void setLstAeropuerto(List<Aeropuerto> lstAeropuerto) {
+		this.lstAeropuerto = lstAeropuerto;
+	}
+
+	public List<Pasajero> getLstPasajeros() {
+		return lstPasajeros;
+	}
+
+	public void setLstPasajeros(List<Pasajero> lstPasajeros) {
+		this.lstPasajeros = lstPasajeros;
+	}
+
+	public List<Vuelo> getLstVuelos() {
+		return lstVuelos;
+	}
+
+	public void setLstVuelos(List<Vuelo> lstVuelos) {
+		this.lstVuelos = lstVuelos;
+	}
+	
+	private int generarIdAutoIncrementalAeropuerto() {
+		
+		int id;
+		
+		if( this.lstAeropuerto.isEmpty() ) id = 0;
+		else id = this.lstAeropuerto.get( this.lstAeropuerto.size() - 1 ).getIdAeropuerto() + 1;
+		
+		return id;
+	}
+	
+	private int generarIdAutoIncrementalPasajero() {
+		
+		int id;
+		
+		if( this.lstPasajeros.isEmpty() ) id = 0;
+		else id = this.lstPasajeros.get( this.lstPasajeros.size() - 1 ).getIdPasajero() + 1;
+		
+		return id;
+	}
+	
+	
+	public boolean agregarAeropuerto(String codAeropuerto, String aeropuerto) throws Exception {
+		
+		if( codAeropuerto.length() != 3)  {
+			throw new Exception("Error: La longitud es distinta de 3");
+		}
+		
+		if( !( Character.isLetter(codAeropuerto.charAt(0))
+			&& Character.isLetter(codAeropuerto.charAt(1))
+			&& Character.isLetter(codAeropuerto.charAt(2)) )
+				) {
+			throw new Exception("Error: Los caracteres deben ser todos letras");
+		}
+		
+		
+		int id = this.generarIdAutoIncrementalAeropuerto();
+		
+		this.lstAeropuerto.add( new Aeropuerto(id, codAeropuerto, aeropuerto) );
+		
+		return true;
+		
+	}
+	
+	public Aeropuerto traerAeropuerto(String codAeropuerto) {
+		
+		Aeropuerto a = null;
+		int i = 0;
+		
+		while( a == null && i < this.lstAeropuerto.size() ) {
+			
+			if( this.lstAeropuerto.get(i).getCodAeropuerto().equals(codAeropuerto) ) {
+				a = this.lstAeropuerto.get(i);
+			}
+			
+			i++;
+		}
+		
+		return a;
+		
+	}
+	
+	
+	public boolean agregarPasajero(String apellido, String nombre, int dni, boolean viajeroFrecuente) {
+		
+		int id = this.generarIdAutoIncrementalPasajero();
+		
+		this.lstPasajeros.add( new Pasajero(id, apellido, nombre, dni, viajeroFrecuente) );
+		
+		return true;
+	}
+	
+	
+}

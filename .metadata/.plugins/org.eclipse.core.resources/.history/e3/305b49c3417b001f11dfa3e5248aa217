@@ -1,0 +1,24 @@
+package Test;
+
+import Modelo.AerolineasArgentinas;
+
+public class TestAerolineasArgentinas {
+
+	public static void main(String[] args) throws Exception {
+		
+		
+		AerolineasArgentinas aa = new AerolineasArgentinas();
+		
+		try {
+			aa.agregarAeropuerto("BUE", "BUENOS AIRES");
+			aa.agregarAeropuerto("COR", "CORDOBA");
+			aa.agregarAeropuerto("BRC", "BARILOCHE");
+		} catch (Exception e) {
+		
+			e.printStackTrace();
+		}
+
+	}
+
+}
+

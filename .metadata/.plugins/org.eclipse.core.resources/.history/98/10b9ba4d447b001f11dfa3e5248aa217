@@ -1,0 +1,31 @@
+package Modelo;
+
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Vuelo {
+	
+	private int idVuelo;
+	private LocalDate fecha;
+	private LocalTime horaSalida;
+	private LocalTime horaLlegada;
+	private Aeropuerto aeropuertoSalida;
+	private Aeropuerto aeropuertoLlegada;
+	private List<Pasajero> lstPasajeros;
+	
+	public Vuelo(int idVuelo, LocalDate fecha, LocalTime horaSalida, LocalTime horaLlegada, Aeropuerto aeropuertoSalida,
+			Aeropuerto aeropuertoLlegada) {
+		super();
+		this.idVuelo = idVuelo;
+		this.fecha = fecha;
+		this.horaSalida = horaSalida;
+		this.horaLlegada = horaLlegada;
+		this.aeropuertoSalida = aeropuertoSalida;
+		this.aeropuertoLlegada = aeropuertoLlegada;
+		this.lstPasajeros = new ArrayList<Pasajero>();
+	}
+	
+	
+}

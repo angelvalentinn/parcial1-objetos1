@@ -1,0 +1,63 @@
+package Test;
+
+import Modelo.*;
+
+public class TestAerolineasArgentinas {
+
+	public static void main(String[] args) throws Exception {
+		
+		
+		AerolineasArgentinas aa = new AerolineasArgentinas();
+		
+		System.out.println("1 - 1");
+		try {
+			aa.agregarAeropuerto("BUE", "BUENOS AIRES");
+			aa.agregarAeropuerto("COR", "CORDOBA");
+			aa.agregarAeropuerto("BRC", "BARILOCHE");
+			
+			for(Aeropuerto a : aa.getLstAeropuerto() ) {
+				System.out.println(a.toString());
+			}
+			
+		} catch (Exception e) {
+		
+			e.printStackTrace();
+		}
+		
+		//ERROR
+		System.out.println("1 - 2");
+		try {
+			
+			aa.agregarAeropuerto("2BHI", "BAHIA BLANCA");
+			
+		} catch (Exception e) {
+		
+			e.printStackTrace();
+		}
+		
+		System.out.println("2");
+		System.out.println(aa.traerAeropuerto("COR"));
+		
+		
+		System.out.println("3");
+		try {
+			
+			aa.agregarPasajero("Ruina", "Oscar", 11111111, false);
+			aa.agregarPasajero("Scordomaglia", "Ezequiel", 22222222, true);
+			aa.agregarPasajero("Siciliano", "Gustavo", 33333333, true);
+			aa.agregarPasajero("Vranic", "Alejandra", 44444444, false);
+			aa.agregarPasajero("Altieri", "Angel", 55555555, true);
+			
+			for(Pasajero p : aa.getLstPasajeros() ) {
+				System.out.println(p.toString());
+			}
+			
+		} catch (Exception e) {
+		
+			e.printStackTrace();
+		}
+		
+	}
+
+}
+
